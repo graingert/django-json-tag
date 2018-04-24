@@ -11,19 +11,6 @@ def read_file(filename):
         return f.read()
 
 
-class PyTest(TestCommand):
-    def finalize_options(self):
-        TestCommand.finalize_options(self)
-        self.test_args = []
-        self.test_suite = True
-
-    def run_tests(self):
-        # If we were to import outside of this function, pytest wouldn't be
-        # installed yet.
-        import pytest
-        pytest.main(self.test_args)
-
-
 setup(name='django-json-tag',
       version=version,
       author="fusionbox, inc.",
@@ -42,17 +29,14 @@ setup(name='django-json-tag',
           'Topic :: Internet :: WWW/HTTP',
           'Topic :: Software Development :: Libraries',
           'Programming Language :: Python',
-          'Programming Language :: Python :: 2.6',
           'Programming Language :: Python :: 2.7',
-          'Programming Language :: Python :: 3.3',
           'Programming Language :: Python :: 3.4',
+          'Programming Language :: Python :: 3.5',
+          'Programming Language :: Python :: 3.6',
       ],
       install_requires=['Django>=1.8'],
       packages=[
           'argonauts',
           'argonauts.templatetags',
       ],
-
-      tests_require=['pytest-django', 'pytest'],
-      cmdclass = {'test': PyTest},
 )

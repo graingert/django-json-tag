@@ -17,8 +17,8 @@ from django.views.generic import View
 from django.test import RequestFactory
 from django.test.client import FakePayload
 
-from argonauts import dumps
-from argonauts.views import JsonRequestMixin
+from json_tag import dumps
+from json_tag.views import JsonRequestMixin
 
 
 class EgObject(object):
@@ -101,7 +101,7 @@ class RenderingTestMixin(object):
 
 
 class TestJsonTemplateFilter(RenderingTestMixin):
-    template = "{% load argonauts %}{{ data|json }}"
+    template = "{% load json_tag %}{{ data|json }}"
 
     def render_data(self, data):
         template = Template(self.template)
@@ -110,7 +110,7 @@ class TestJsonTemplateFilter(RenderingTestMixin):
 
 class TestJsonTemplateTag(RenderingTestMixin):
     def template(self, extra, **kwargs):
-        template = "{% load argonauts %}{% json " + extra + " %}"
+        template = "{% load json_tag %}{% json " + extra + " %}"
         return Template(template).render(Context(kwargs))
 
     def render(self, *args, **kwargs):

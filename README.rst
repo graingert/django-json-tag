@@ -1,10 +1,10 @@
-================
-Django-Argonauts
-================
+===============
+django-json-tag
+===============
 
-.. image:: https://api.travis-ci.org/fusionbox/django-argonauts.png
+.. image:: https://api.travis-ci.org/graingert/django-json-tag.png
    :alt: Building Status
-   :target: https://travis-ci.org/fusionbox/django-argonauts
+   :target: https://travis-ci.org/graingert/django-json-tag
 
 
 A lightweight collection of JSON helpers for Django. Includes a template filter
@@ -23,7 +23,7 @@ to generate safe JavaScript:
 
 .. code:: html
 
-  {% load argonauts %}
+  {% load json_tag %}
   <script type="application/javascript">
     (function () {
         var object_list = {{ object_list|json }};
@@ -63,7 +63,7 @@ escapes. If we output ``{{ somedata|json }}``, we get:
     var somedata = "\u0060xscript\u0062x\u0060xscript\u0062xconsole.log(\u0027xss\u0027);//";
   </script>
 
-Argonauts also escapes single quotes this allows you to write valid JS for tools like
+json_tag also escapes single quotes this allows you to write valid JS for tools like
 eslint-plugin-html and for use in single quoted XML or XHTML attributes:
 
 .. code:: html
@@ -93,7 +93,7 @@ To create an Array, use:
 
 .. code:: html
 
-  {% load argonauts %}
+  {% load json_tag %}
   <script type="module">
     const [ham, spam, eggs] = {% json ham spam eggs %};
     // do something with ham, spam and eggs.
@@ -103,7 +103,7 @@ To create an Object, use:
 
 .. code:: html
 
-  {% load argonauts %}
+  {% load json_tag %}
   <script type="module">
     const { ham, spam, eggs } = {% json ham=user spam=author eggs=owner %};
     // do something with ham, spam and eggs.
@@ -114,7 +114,7 @@ numeric properties from the args and string properties from the kwargs.
 
 .. code:: html
 
-  {% load argonauts %}
+  {% load json_tag %}
   <script type="module">
     import assert from 'assert';
     const x = {% json ham spam=author eggs=owner %};
@@ -133,7 +133,7 @@ You can override it, but it is likely to cause Array methods to fail:
 
 .. code:: html
 
-  {% load argonauts %}
+  {% load json_tag %}
   <script type="module">
     import assert from 'assert';
     const x = {% json ham spam=author eggs=owner length='banana'%};
@@ -161,7 +161,7 @@ views:
 
     from django.db import models
     from django.views.generic.detail import BaseDetailView
-    from argonauts.views import JsonResponseMixin
+    from json_tag.views import JsonResponseMixin
 
     class Blog(models.Model):
         title = models.CharField(max_length=255)
@@ -188,8 +188,8 @@ views:
 .. code:: python
 
     from django.views.generic.base import View
-    from argonauts.views import JsonRequestMixin:
-    from argonauts.http import JsonResponse
+    from json_tag.views import JsonRequestMixin:
+    from json_tag.http import JsonResponse
 
     class EchoView(JsonRequestMixin, View):
         def dispatch(self, *args, **kwargs):
@@ -208,7 +208,7 @@ handling authentication, and at least one HTTP method.
 .. code:: python
 
     from django.core.exceptions import PermissionDenied
-    from argonauts.views import RestView
+    from json_tag.views import RestView
     from .utils import get_action
 
     class CrazyRestView(RestView):

@@ -24,11 +24,13 @@ class PyTest(TestCommand):
         pytest.main(self.test_args)
 
 
-setup(name='django-argonauts',
+setup(name='django-json-tag',
       version=version,
-      author="Fusionbox, Inc.",
+      author="fusionbox, inc.",
       author_email="programmers@fusionbox.com",
-      url="https://github.com/fusionbox/django-argonauts",
+      maintainer="Thomas Grainger",
+      author_email="django-json-tag@graingert.co.uk",
+      url="https://github.com/graingert/django-json-tag",
       keywords="rest json views django helpers",
       description="A lightweight collection of JSON helpers for Django.",
       long_description=read_file('README.rst') + '\n\n' + read_file('CHANGELOG.rst'),

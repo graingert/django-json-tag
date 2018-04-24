@@ -1,7 +1,7 @@
 Changelog
 =========
 
-0.0.1 (unreleased)
+0.0.1 (2018-04-24)
 ------------------
 
 - Rename module to json_tag

@@ -1,6 +1,6 @@
 import os
 
-from setuptools import setup
+from setuptools import setup, find_packages
 from setuptools.command.test import test as TestCommand
 
 version = '1.2.1.dev0'
@@ -35,8 +35,7 @@ setup(name='django-json-tag',
           'Programming Language :: Python :: 3.6',
       ],
       install_requires=['Django>=1.8'],
-      packages=[
-          'argonauts',
-          'argonauts.templatetags',
-      ],
+      packages=find_packages(
+          exclude=["*.tests", "*.tests.*", "tests.*", "tests"]
+      ),
 )

@@ -1,12 +1,9 @@
 from __future__ import absolute_import
 
-from django import template
 from django.utils.safestring import mark_safe
 
 from argonauts import dumps as json_dumps
-
-register = template.Library()
-
+from .library import register
 
 @register.filter
 def json(a):

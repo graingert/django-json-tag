@@ -2,8 +2,9 @@ from __future__ import absolute_import
 
 from django.utils.safestring import mark_safe
 
-from argonauts import dumps as json_dumps
+from ...dumper import dumps
 from .library import register
+
 
 @register.filter
 def json(a):
@@ -17,7 +18,7 @@ def json(a):
     If the output needs to be put in an attribute, entitize the output of this
     filter.
     """
-    json_str = json_dumps(a)
+    json_str = dumps(a)
 
     # Escape all the XML/HTML special characters.
     escapes = ['<', '>', '&', "'"]

@@ -1,6 +1,7 @@
 """
 View classes to help facilitate the creation of REST APIs
 """
+from __future__ import absolute_import
 import json
 
 from django.core.exceptions import PermissionDenied, ValidationError
@@ -8,7 +9,7 @@ from django.http import HttpResponse, Http404
 from django.views.generic.base import View
 from django.conf import settings
 
-from argonauts import dumps
+from .dumper import dumps
 
 
 class JsonResponseMixin(object):
@@ -28,7 +29,7 @@ class JsonResponseMixin(object):
     def serialize(self, obj):
         """
         Returns a json serialized string object encoded using
-        `argonauts.serializers.JSONArgonautsEncoder`.
+        `JSONArgonautsEncoder`.
         """
         return dumps(obj)
 

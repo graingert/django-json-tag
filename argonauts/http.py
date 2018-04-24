@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 
-from argonauts import dumps
+from .dumper import dumps
 
 
 class JsonResponse(HttpResponse):

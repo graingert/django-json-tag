@@ -1,13 +1,6 @@
 # -*- coding: utf-8 -*-
 import pkg_resources
 
-__version__ = pkg_resources.get_distribution('django-argonauts').version
-
-# BBB: This was here before we switch to zest.releaser.
-VERSION = tuple(__version__.split('.'))
-def get_version():
-    return __version__
-
 
 def dumps(*args, **kwargs):
     """

@@ -3,7 +3,7 @@ import os
 from setuptools import setup, find_packages
 from setuptools.command.test import test as TestCommand
 
-version = '1.2.1.dev0'
+version = '0.0.0'
 
 
 def read_file(filename):
@@ -16,7 +16,7 @@ setup(name='django-json-tag',
       author="fusionbox, inc.",
       author_email="programmers@fusionbox.com",
       maintainer="Thomas Grainger",
-      author_email="django-json-tag@graingert.co.uk",
+      maintainer_email="django-json-tag@graingert.co.uk",
       url="https://github.com/graingert/django-json-tag",
       keywords="rest json views django helpers",
       description="A lightweight collection of JSON helpers for Django.",
